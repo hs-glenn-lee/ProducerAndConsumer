@@ -63,8 +63,8 @@ class Producer implements Runnable{
 			products = new XmlIterator(targetPath);
 			while(products.hasNext()) {
 				queue.put(products.next());
+				System.out.println("produced");
 			}
-			System.out.println("pr end");
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}

@@ -36,7 +36,7 @@ public class XmlFileGenerator {
 		HashMap<String, Integer> stastics = new HashMap<String, Integer>();
 
 		int sumByteSize = 0;
-		int maxByteSize = 1024 * 15; // 1 GB = 1024 * 1024 * 1024 * 1
+		int maxByteSize = 1024 * 1024 * 15; // 1 GB = 1024 * 1024 * 1024 * 1
 		int fileCount = 0;
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
