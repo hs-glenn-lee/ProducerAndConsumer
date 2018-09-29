@@ -34,10 +34,9 @@ public class XmlFileGenerator {
 		}
 		
 		HashMap<String, Integer> stastics = new HashMap<String, Integer>();
-		
-		
+
 		int sumByteSize = 0;
-		int maxByteSize = 1024 * 1024 * 10; // 1 GB = 1024 * 1024 * 1024 * 1
+		int maxByteSize = 1024 * 15; // 1 GB = 1024 * 1024 * 1024 * 1
 		int fileCount = 0;
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -62,12 +61,12 @@ public class XmlFileGenerator {
 			doc.appendChild(parent);
 			
 
-			
 			for(int i=0; i<contentTextAsList.size();) {
 				int wordCntInElement = rand.nextInt(40)+1;
-				int k = (i + wordCntInElement < contentTextAsList.size())? i + wordCntInElement : contentTextAsList.size()-1 ;
-				String elText = String.join(" ", contentTextAsList.subList(i, k));
-				i = k+1;
+				int k = (i + wordCntInElement < contentTextAsList.size())? i + wordCntInElement : contentTextAsList.size();
+				String elText = String.join("$", contentTextAsList.subList(i, k))+ "$";
+
+				i = k;
 				Element child = doc.createElement("word");
 				child.setTextContent(elText);
 				parent.appendChild(child);

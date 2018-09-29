@@ -12,26 +12,21 @@ class Words implements Iterable<String> {
 	}
 
 	private class WordIterator implements Iterator<String> {
-
-		private BreakIterator wordBoundary;
-		private int start;
-		private int end;
-
+		int start;
+		int end;
 		public WordIterator() {
-			wordBoundary = BreakIterator.getWordInstance();
-			wordBoundary.setText(text);
-			start = wordBoundary.first();
-			end = wordBoundary.next();
+			start = 0;
+			end = text.indexOf("$", start);
 		}
 
 		public boolean hasNext() {
-			return end != BreakIterator.DONE;
+			return end != -1;
 		}
 
 		public String next() {
 			String s = text.substring(start, end);
-			start = end;
-			end = wordBoundary.next();
+			start = end+1;
+			end = text.indexOf("$", start);
 			return s;
 		}
 

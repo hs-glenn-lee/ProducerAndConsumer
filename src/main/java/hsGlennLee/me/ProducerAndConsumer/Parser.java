@@ -22,14 +22,8 @@ public class Parser {
 	}
 	
 	public ParsedXML parse(File file) throws Exception {
-		System.out.println("parsing" + System.currentTimeMillis());
 		Document doc = dBuilder.parse(file);
-		NodeList wordNodes = doc.getElementsByTagName("word");
-		for (int i = 0; i < wordNodes.getLength(); i++) {
-			Node node = wordNodes.item(i);
-			contentSB.append(node.getTextContent());
-		}
-		System.out.println("parsing end");
-		return new ParsedXML(contentSB.toString());
+		String contentText= doc.getFirstChild().getTextContent().trim();
+		return new ParsedXML(contentText);
 	}
 }

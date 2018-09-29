@@ -24,7 +24,6 @@ class Producer implements Runnable{
 		private int idx=0;
 		private XmlIterator (Path targetDir) throws ParserConfigurationException {
 			parser = new Parser();
-			
 			xmlFiles = targetDir.toFile().listFiles(new FilenameFilter() {
 				public boolean accept(File dir, String name) {
 					if(name.contains(".xml")) {
@@ -44,7 +43,6 @@ class Producer implements Runnable{
 		}
 
 		public Product next() {
-			System.out.println(idx);
 			File nextFile = xmlFiles[idx];
 			Product product = null;
 			try {
